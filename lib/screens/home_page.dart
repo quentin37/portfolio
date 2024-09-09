@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../composant/responsive.dart';
+
   class MyHomePage extends StatefulWidget {
     const MyHomePage({super.key});
 
@@ -12,7 +14,6 @@ import 'package:google_fonts/google_fonts.dart';
   class MyHomePageState extends State<MyHomePage> {
     @override
     Widget build(BuildContext context) {
-      double height = MediaQuery.of(context).size.height;
       Color title = const Color(0xffffc029).withOpacity(0.9);
       return Scaffold(
         appBar: AppBar(
@@ -24,7 +25,7 @@ import 'package:google_fonts/google_fonts.dart';
               children: <Widget>[
                 Container(
                   padding: const EdgeInsets.only(left: 20,top: 20,right: 20),
-                  height: 400,
+                  height: !Responsive.isDesktop(context) ? 557:  400,
                   color: const Color(0xffffc029).withOpacity(0.9),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -36,28 +37,35 @@ import 'package:google_fonts/google_fonts.dart';
                         Padding(
                           padding: const EdgeInsets.only(top : 45),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: !Responsive.isDesktop(context) ?  CrossAxisAlignment.center : CrossAxisAlignment.start,
                             children: [
                               AnimatedTextKit(
                                 totalRepeatCount : 1,
                                 repeatForever: false,
                                 animatedTexts: [
-                                  WavyAnimatedText('Quentin billac',speed: const Duration(milliseconds: 125),textStyle: GoogleFonts.playfairDisplay(fontWeight: FontWeight.w500,fontSize: 45,color:Colors.white)),
+                                  WavyAnimatedText('Quentin Billac',speed: const Duration(milliseconds: 125),textStyle: GoogleFonts.playfairDisplay(fontWeight: FontWeight.w500,fontSize: 45,color:Colors.white)),
                                 ],
                               ),
                               AnimatedTextKit(
                                 totalRepeatCount : 1,
                                 repeatForever: false,
                                 animatedTexts: [
-                                  TyperAnimatedText('Web & Mobile Application Designer',
+                                  TyperAnimatedText('Web & Mobile Application Designer', textAlign: Responsive.isMobile(context) ? TextAlign.center : TextAlign.left,
                                       textStyle:  GoogleFonts.playfairDisplay(fontWeight: FontWeight.w500,fontSize: 45,color:Colors.white)),
                                 ],
                               ),
+                              if(!Responsive.isDesktop(context))
+                                const SizedBox(
+                                    height: 300,
+                                    width: 300,
+                                    child: Image(image: NetworkImage("https://quebillc.freeboxos.fr/img/profil.png"))),
                             ],
                           ),
                         ),
                       ),
+                      if(Responsive.isDesktop(context))
                       const SizedBox(width: 100),
+                      if(Responsive.isDesktop(context))
                       const SizedBox(
                         width: 450,
                           child: Image(image: NetworkImage("https://quebillc.freeboxos.fr/img/profil.png")))
