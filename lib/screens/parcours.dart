@@ -13,6 +13,60 @@ class MyPath extends StatefulWidget {
 class MyPathState extends State<MyPath> {
   bool isHovering1 = false;
   bool isHovering2 = false;
+  double title = 35;
+  double subTitle = 25;
+  double description = 20;
+  double height = 250;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (Responsive.isMobile(context)) {
+      title = 25;subTitle = 20;description = 15;height=300;
+    } else if (Responsive.isTablet(context)) {
+      title = 30;subTitle = 25;description = 20;height=250;
+    } else {
+      title = 35;subTitle = 30;description = 20;height=250;
+    }
+  }
+
+  final List<Map<String, String>> timelineData = [
+    {
+      'color':'0xffB3B3B3',
+      'year': '2023',
+      'title': 'CapMonetique',
+      'description':
+      'Suite à mon alternance et à l\'obtention de mon diplôme de Concepteur Développeur d\'Applications, l\'entreprise a souhaité poursuivre notre collaboration en me proposant un contrat en CDI.'
+    },
+    {
+      'color':'0xff707373',
+      'year': '2022',
+      'title': 'Alternance - WildCodeSchool',
+      'description':
+      'À la fin de ma formation Développeur Web et Mobile, j\'ai poursuivi avec une formation en alternance de Concepteur Développeur d\'Applications.'
+    },
+    {
+      'color':'0xffFFC029',
+      'year': '2022',
+      'title': 'Formation - WildCodeSchool',
+      'description':
+      'Après une année en école d\'ingénieur, j\'ai décidé de me réorienter en devenant Développeur Web et Mobile via la Wild Code School.'
+    },
+    {
+      'color':'0xffB3B3B3',
+      'year': '2021',
+      'title': 'SupInfo',
+      'description':
+      'Après mon baccalauréat STI2D, j\'ai approfondi mes connaissances en informatique en intégrant une école d\'ingénieur.'
+    },
+    {
+      'color':'0xff707373',
+      'year': '2020',
+      'title': 'Baccalauréat',
+      'description':
+      'Obtention du baccalauréat Technologique STI2D avec la mention Assez Bien, option SIN (Systèmes d\'Information et Numérique).'
+    }
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -89,224 +143,73 @@ class MyPathState extends State<MyPath> {
       ) : null,
       body: SingleChildScrollView(
         child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 250,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text('2023', style: TextStyle(fontSize: 40),),
-                        Text('CapMonetique',style: TextStyle(fontSize: 30)),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: Center(
-                      child: Container(
-                        width: 30,
-                        color: const Color(0xffB3B3B3),
-                        child: Center(
-                          child: Container(
-                            width: 15,
-                            height: 15,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),),
-                        ),
-                      )),
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: const Row(children: [
-                      Flexible(child: Text('Suite à mon alternance et à l\'obtention de mon diplôme de Concepteur Développeur d\'Applications, l\'entreprise a souhaité poursuivre notre collaboration en me proposant un contrat en CDI, ce qui témoigne de la confiance qu\'elle m\'accorde pour continuer à contribuer à ses projets'))
-                    ],),
-                  )
-
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 250,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text('2022', style: TextStyle(fontSize: 40),),
-                        Text('Alternance - WildCodeSchool',style: TextStyle(fontSize: 30)),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: Center(
-                      child: Container(
-                          width: 30,
-                          color: const Color(0xff707373),
-                          child: Center(
-                            child: Container(
-                              width: 15,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),),
-                            ),
-                          )),
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: const Row(children: [
-                      Flexible(child: Text('À la fin de ma formation Développeur Web et Mobile, j\'ai souhaité poursuivre mon parcours avec la Wild Code School en intégrant une deuxième formation en alternance sur un an, celle de Concepteur Développeur d\'Applications.'))
-                    ],),
-                  )
-
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 250,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text('2022', style: TextStyle(fontSize: 40),),
-                        Text('Formation - WildCodeSchool',style: TextStyle(fontSize: 30)),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: Center(
-                      child: Container(
-                          width: 30,
-                          color: const Color(0xffFFC029),
-                          child: Center(
-                            child: Container(
-                              width: 15,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),),
-                            ),
-                          )),
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: const Row(children: [
-                      Flexible(child: Text('Suite à mon année en école d\'ingénieur, où j\'ai découvert le développement informatique, j\'ai décidé de me réorienter en suivant une formation pour devenir Développeur Web et Mobile.'))
-                    ],),
-                  )
-
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 250,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text('2021', style: TextStyle(fontSize: 40),),
-                        Text('SupInfo',style: TextStyle(fontSize: 30)),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: Center(
-                      child: Container(
-                          width: 30,
-                          color: const Color(0xffB3B3B3),
-                          child: Center(
-                            child: Container(
-                              width: 15,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),),
-                            ),
-                          )),
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: const Row(children: [
-                      Flexible(child: Text('Après l\'obtention de mon baccalauréat STI2D, j\'ai souhaité approfondir mes connaissances en informatique. J\'ai donc décidé d\'intégrer une école d\'ingénieur, où j\'ai poursuivi mes études jusqu\'en 2022.'))
-                    ],),
-                  )
-
-                ],
-              ),
-            ),
-
-            SizedBox(
-              height: 250,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text('2020', style: TextStyle(fontSize: 40),),
-                        Text('Baccalauréat',style: TextStyle(fontSize: 30)),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    //width: ,
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: Center(
-                      child: Container(
-                          width: 30,
-                          color: const Color(0xff707373),
-                          child: Center(
-                            child: Container(
-                              width: 15,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),),
-                            ),
-                          )),
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: const Row(children: [
-                      Flexible(child: Text('Obtention du baccalauréat Technologique STI2D (Sciences et Technologies de l\'Industrie et du Développement Durable), option SIN (Systèmes d\'Information et Numérique), avec la mention Assez Bien.'))
-                    ],),
-                  )
-
-                ],
-              ),
-            )
-
-           ],
+          children:
+          timelineData.map((data) {
+            return _buildTimelineRow(
+                context,int.parse(data['color']!), data['year']!, data['title']!, data['description']!, title, subTitle, description, Responsive.isMobile(context) ? 15 : 30,height);
+          }).toList(),
         ),
       ),
+    );
+  }
+
+  Widget _buildTimelineRow(BuildContext context,int color, String year, String title, String description,
+      double titleFontSize, double subTitleFontSize, double descriptionFontSize, double dotSize,double height) {
+    return SizedBox(
+        height: height,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // Year and Title Column
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 3,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(year, style: TextStyle(fontSize: titleFontSize)),
+                  Text(title, style: TextStyle(fontSize: subTitleFontSize)),
+                ],
+              ),
+            ),
+
+            // Vertical Line with Dot
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 3,
+              child: Center(
+                child: Container(
+                  width: dotSize,
+                  color: Color(color),
+                  child: Center(
+                    child: Container(
+                      width: dotSize / 2,
+                      height: dotSize / 2,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            // Description Column
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 3,
+              child: Row(
+                children: [
+                  Flexible(
+                    child: Text(
+                      description,
+                      style: TextStyle(fontSize: descriptionFontSize),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
     );
   }
 }
