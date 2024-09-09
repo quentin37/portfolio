@@ -13,11 +13,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       showSemanticsDebugger: false,
-      title: 'Portfolio-WebSite',
+      title: 'Portfolio',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey,
-          background: const Color(0xff707373)
+        appBarTheme:  const AppBarTheme(
+            color:Color(0xff707373),
+            foregroundColor:Color(0xffffffff),
+            shadowColor:Color(0xff707373),
+            surfaceTintColor:Color(0xff707373)
         ),
+        focusColor: const Color(0xffffc029).withOpacity(0.9),
+        scaffoldBackgroundColor: const Color(0xff707373),
         useMaterial3: true,
       ),
       home: const MyHomePage(),
